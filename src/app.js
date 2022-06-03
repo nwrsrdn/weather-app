@@ -7,6 +7,8 @@ const forecast = require('./utils/forecast')
 
 const app = express()
 
+const port = process.env.PORT || 3000
+
 const publicDir = path.join(__dirname, '../public')
 const viewsDir = path.join(__dirname, '../templates/views')
 const partialDir = path.join(__dirname, '../templates/partials')
@@ -29,7 +31,7 @@ app.get('/help', (req, res) => {
     res.render('help', {
         title: 'Weather App',
         page: 'Help page',
-        helpText: 'Tulong! tulong! saklolo! kailangan ko ang tulong nyo!',
+        helpText: 'Help! help! saklolo! I need your help!',
         name: 'Erwin'
     })
 })
@@ -88,8 +90,8 @@ app.get('/*', (req, res) => {
     })
 })
 
-app.listen(3000, () => {
-    console.log('Server is up on port 3000')
+app.listen(port, () => {
+    console.log(`Server is up on port ${ port }`)
 })
 
 module.exports = app
